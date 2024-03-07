@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2324_2Y_Integ_Event_PrelimProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="470" Width="800">
+        Title="8BitGame" Height="470" Width="800">
     <Grid x:Name="MainGrid">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
