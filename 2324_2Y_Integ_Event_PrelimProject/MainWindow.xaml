@@ -14,17 +14,71 @@
                 <GradientStop Color="Black" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <StackPanel x:Name="Opening">
+        
+        <StackPanel x:Name="Opening" Visibility="Collapsed">
             <Button x:Name="btn_lBoard" Content="Leaderboard" Height="40" Width="190" Margin="575,20,0,0" Click="btn_lBoard_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
-            <Label Content="8 bit binary" Height="75" Width="500" Margin="0,80,0,0" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Stencil" FontWeight="Bold" Foreground="DarkGreen" />
+            <Label Content="8 bit binary" Height="75" Width="500" Margin="0,80,0,0" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Cascadia Code SemiBold" Foreground="DarkGreen" FontWeight="Bold" />
             <Label Content="game" Height="75" Width="250" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Transparent" FontFamily="Stencil" FontWeight="Bold" Foreground="Red" />
             <Button x:Name="btn_start" Content="Click to Start!" Height="40" Width="190" Margin="0,25,0,0" Click="btn_start_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
         </StackPanel>
+        
+        <StackPanel x:Name="lBoard" Visibility="Collapsed">
+            <Label Content="Which leaderboard would you like to view?" Height="75" Width="800" Margin="0,80,0,0" FontSize="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Stencil" FontWeight="Bold" Foreground="Black" />
+            <Button x:Name="btn_lBoard_easy" Content="Easy" Height="40" Width="100" Margin="0,25,0,0" Click="btn_lBoard_easy_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn_lBoard_med" Content="Medium" Height="40" Width="100" Margin="0,25,0,0" Click="btn_lBoard_med_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn_lBoard_hard" Content="Hard" Height="40" Width="100" Margin="0,25,0,0" Click="btn_lBoard_hard_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+        </StackPanel>
+        
+        <StackPanel x:Name="ez">
+            <Grid>
+                <ListView Name="Leaderboard" Margin="0,100,0,0" Width="310">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Column1}" />
+                            <GridViewColumn Header="Score" Width="100" DisplayMemberBinding="{Binding Column2}" />
+                            <GridViewColumn Header="Total Playtime" Width="100" DisplayMemberBinding="{Binding Column3}" />
+
+                            <!-- Add more columns as needed -->
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+
+        </StackPanel>
+        
         <StackPanel x:Name="Difficulty" Visibility="Collapsed">
-            <Label Content="Choose Difficulty" Height="75" Width="600" Margin="0,80,0,0" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Stencil" FontWeight="Bold" Foreground="Red" Background="{x:Null}" />
+            <Label Content="Choose Difficulty" Height="75" Width="600" Margin="0,80,0,0" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Stencil" FontWeight="Bold" Foreground="Black" />
             <Button x:Name="btn_easy" Content="Easy" Height="40" Width="100" Margin="0,25,0,0" Click="btn_start_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
             <Button x:Name="btn_med" Content="Medium" Height="40" Width="100" Margin="0,25,0,0" Click="btn_start_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
             <Button x:Name="btn_hard" Content="Hard" Height="40" Width="100" Margin="0,25,0,0" Click="btn_start_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
         </StackPanel>
+        
+        <StackPanel x:Name="num_panel" Visibility="Collapsed">
+            <Label x:Name="lbl_num" Content="255" Height="100" Width="150" Margin="0,60,0,0" FontSize="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="Black" />
+            <Button x:Name="btn_check" Content="Submit Answer" Height="40" Width="200" Margin="0,160,0,0" Click="btn_check_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+        </StackPanel>
+        
+        <StackPanel x:Name="button_panel" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="Collapsed">
+            <Button x:Name="btn128" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn128_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn64" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn64_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn32" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn32_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn16" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn16_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn8" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn8_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn4" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn4_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn2" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn2_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn1" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn1_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+        </StackPanel>
+        
+        <StackPanel x:Name="easy_panel" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="Collapsed">
+            <Label Content="128" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
+            <Label Content="64" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
+            <Label Content="32" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
+            <Label Content="16" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
+            <Label Content="8" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
+            <Label Content="4" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
+            <Label Content="2" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
+            <Label Content="1" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
+        </StackPanel>
+
     </Grid>
 </Window>
