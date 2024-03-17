@@ -6,78 +6,143 @@
         xmlns:local="clr-namespace:_2324_2Y_Integ_Event_PrelimProject"
         mc:Ignorable="d"
         Title="8BitGame" Height="470" Width="800">
+    <Window.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="/ASSets/buttonbg.png"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="110"/>
+            <Setter Property="FontFamily" Value="/ASSets/Minecraft.ttf #Minecraft"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="/ASSets/labelbg.png" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Height" Value="140"/>
+            <Setter Property="Width" Value="750"/>
+            <Setter Property="FontFamily" Value="/ASSets/Minecraft.ttf #Minecraft"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="35"/>
+            
+        </Style>
+    </Window.Resources>
+    
+    
     <Grid x:Name="MainGrid">
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Black" Offset="0"/>
-                <GradientStop Color="#FF65FF00" Offset="0.5"/>
-                <GradientStop Color="Black" Offset="1"/>
-            </LinearGradientBrush>
+            <ImageBrush ImageSource="/ASSets/gamebg.jpg"/>
         </Grid.Background>
-        
-        <StackPanel x:Name="Opening" Visibility="Collapsed">
-            <Button x:Name="btn_lBoard" Content="Leaderboard" Height="40" Width="190" Margin="575,20,0,0" Click="btn_lBoard_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
-            <Label Content="8 bit binary" Height="75" Width="500" Margin="0,80,0,0" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Cascadia Code SemiBold" Foreground="DarkGreen" FontWeight="Bold" />
-            <Label Content="game" Height="75" Width="250" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="Transparent" FontFamily="Stencil" FontWeight="Bold" Foreground="Red" />
-            <Button x:Name="btn_start" Content="Click to Start!" Height="40" Width="190" Margin="0,25,0,0" Click="btn_start_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+
+        <StackPanel x:Name="Opening" Visibility="Visible">
+            <Button x:Name="btn_lBoard" Style="{StaticResource ButtonStyle}" Content="Leaderboard" Height="40" Width="190" Margin="575,20,0,0" Click="btn_lBoard_Click" FontSize="20" />
+            <Image Source="/ASSets/startlabel.png" Height="90" Margin="0,40,0,0"/>
+            <!--<Label Content="8 Bit Binary Game" Height="167" Width="500" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" FontFamily="/ASSets/PokemonSolid.ttf #Pokemon Solid" Foreground="#FFD9DA22" />-->
+            <Button x:Name="btn_start" Content="Click to Start!" Style="{StaticResource ButtonStyle}" Height="40" Width="190" Margin="0,170,0,0" Click="btn_start_Click" FontSize="20" />
         </StackPanel>
-        
-        <StackPanel x:Name="lBoard" Visibility="Collapsed">
-            <Label Content="Which leaderboard would you like to view?" Height="75" Width="800" Margin="0,80,0,0" FontSize="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Stencil" FontWeight="Bold" Foreground="Black" />
-            <Button x:Name="btn_lBoard_easy" Content="Easy" Height="40" Width="100" Margin="0,25,0,0" Click="btn_lBoard_easy_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
-            <Button x:Name="btn_lBoard_med" Content="Medium" Height="40" Width="100" Margin="0,25,0,0" Click="btn_lBoard_med_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
-            <Button x:Name="btn_lBoard_hard" Content="Hard" Height="40" Width="100" Margin="0,25,0,0" Click="btn_lBoard_hard_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+
+        <StackPanel x:Name="lbl_lBoard_panel" VerticalAlignment="Bottom" Visibility="Collapsed">
+            <Button x:Name="btn_backtoop" Content="Back" Margin="650,0,0,230" Click="btn_backtoop_Click" Style="{StaticResource ButtonStyle}" />
+            <Label Content="Which difficulty would you like to view?" Style="{StaticResource LabelStyle}" Margin="0,0,0,0" />
         </StackPanel>
-        
-        <StackPanel x:Name="ez">
+
+        <StackPanel x:Name="btn_lBoards" HorizontalAlignment="Center" Orientation="Horizontal" Visibility="Collapsed">
+            <Button x:Name="btn_lBoard_easy" Content="Easy" Margin="25,0,25,200" Click="btn_lBoard_easy_Click" Style="{StaticResource ButtonStyle}" />
+            <Button x:Name="btn_lBoard_med" Content="Medium" Margin="25,0,25,200" Click="btn_lBoard_med_Click" Style="{StaticResource ButtonStyle}" />
+            <Button x:Name="btn_lBoard_hard" Content="Hard" Margin="25,0,25,200" Click="btn_lBoard_hard_Click" Style="{StaticResource ButtonStyle}" />
+        </StackPanel>
+
+        <StackPanel x:Name="leaderboard" Visibility="Collapsed">
+            <Label x:Name="lbl_lBoard" Content="womp" Height="100" Width="660" Margin="0,0,0,0" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/ASSets/#Pokemon Solid" FontWeight="Bold" Foreground="#FFD9DA22" />
             <Grid>
-                <ListView Name="Leaderboard" Margin="0,100,0,0" Width="310">
+                <ListView Name="Leaderboard" Margin="0,0,0,0" Width="310">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Name" Width="100" DisplayMemberBinding="{Binding Column1}" />
                             <GridViewColumn Header="Score" Width="100" DisplayMemberBinding="{Binding Column2}" />
-                            <GridViewColumn Header="Total Playtime" Width="100" DisplayMemberBinding="{Binding Column3}" />
-
-                            <!-- Add more columns as needed -->
+                            <GridViewColumn Header="Playtime(seconds)" Width="100" DisplayMemberBinding="{Binding Column3}" />
                         </GridView>
                     </ListView.View>
                 </ListView>
             </Grid>
+        </StackPanel>
 
+        <StackPanel x:Name="pnl_lboard_back" Visibility="Collapsed">
+            <Button x:Name="btn_lboard_back" Content="Back" Style="{StaticResource ButtonStyle}" Margin="0,370,0,0" Click="btn_lboard_back_Click" />
         </StackPanel>
-        
-        <StackPanel x:Name="Difficulty" Visibility="Collapsed">
-            <Label Content="Choose Difficulty" Height="75" Width="600" Margin="0,80,0,0" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Stencil" FontWeight="Bold" Foreground="Black" />
-            <Button x:Name="btn_easy" Content="Easy" Height="40" Width="100" Margin="0,25,0,0" Click="btn_start_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
-            <Button x:Name="btn_med" Content="Medium" Height="40" Width="100" Margin="0,25,0,0" Click="btn_start_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
-            <Button x:Name="btn_hard" Content="Hard" Height="40" Width="100" Margin="0,25,0,0" Click="btn_start_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+
+        <StackPanel x:Name="lbl_diff" VerticalAlignment="Bottom" Visibility="Collapsed">
+            <Button x:Name="btn_diff_back" Content="Back" Margin="650,0,0,230" Click="btn_diff_back_Click" Style="{StaticResource ButtonStyle}" />
+            <Label Content="Choose Difficulty" Style="{StaticResource LabelStyle}" Margin="0,0,0,0" />
         </StackPanel>
-        
+
+        <StackPanel x:Name="btn_diff" HorizontalAlignment="Center" Orientation="Horizontal" Visibility="Collapsed">
+            <Button x:Name="btn_easy" Content="Easy" Margin="25,0,25,200" Click="btn_easy_Click" Style="{StaticResource ButtonStyle}" />
+            <Button x:Name="btn_med" Content="Medium" Margin="25,0,25,200" Click="btn_med_Click" Style="{StaticResource ButtonStyle}" />
+            <Button x:Name="btn_hard" Content="Hard" Margin="25,0,25,200" Click="btn_hard_Click" Style="{StaticResource ButtonStyle}" />
+        </StackPanel>
+
+        <StackPanel x:Name="timer_panel" Orientation="Horizontal" VerticalAlignment="Top" Visibility="Collapsed">
+            <Label x:Name="lbl_score" Content="0" Height="40" Width="60" Margin="10,10,500,0" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold" Background="#FF232055" />
+            <Label x:Name="lbl_round" Content="womp" Height="50" Width="120" Margin="0,10,30,0" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold"/>
+            <Label x:Name="lbl_timer" Content="0" Height="50" Width="60" Margin="0,10,0,0" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold"/>
+        </StackPanel>
+
         <StackPanel x:Name="num_panel" Visibility="Collapsed">
-            <Label x:Name="lbl_num" Content="255" Height="100" Width="150" Margin="0,60,0,0" FontSize="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="Black" />
-            <Button x:Name="btn_check" Content="Submit Answer" Height="40" Width="200" Margin="0,160,0,0" Click="btn_check_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Label x:Name="lbl_num" Content="0" Height="100" Width="150" Margin="0,60,0,0" FontSize="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold" />
+            <Button x:Name="btn_check" Content="Submit Answer" Height="40" Width="200" Margin="0,210,0,0" Click="btn_check_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
         </StackPanel>
-        
+
         <StackPanel x:Name="button_panel" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="Collapsed">
-            <Button x:Name="btn128" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn128_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
-            <Button x:Name="btn64" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn64_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
-            <Button x:Name="btn32" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn32_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
-            <Button x:Name="btn16" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn16_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
-            <Button x:Name="btn8" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn8_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
-            <Button x:Name="btn4" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn4_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
-            <Button x:Name="btn2" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn2_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
-            <Button x:Name="btn1" Content="0" Height="40" Width="50" Margin="10,25,10,0" Click="btn1_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn128" Content="0" Height="40" Width="50" Margin="10,180,10,0" Click="btn128_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn64" Content="0" Height="40" Width="50" Margin="10,180,10,0" Click="btn64_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn32" Content="0" Height="40" Width="50" Margin="10,180,10,0" Click="btn32_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn16" Content="0" Height="40" Width="50" Margin="10,180,10,0" Click="btn16_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn8" Content="0" Height="40" Width="50" Margin="10,180,10,0" Click="btn8_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn4" Content="0" Height="40" Width="50" Margin="10,180,10,0" Click="btn4_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn2" Content="0" Height="40" Width="50" Margin="10,180,10,0" Click="btn2_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn1" Content="0" Height="40" Width="50" Margin="10,180,10,0" Click="btn1_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
         </StackPanel>
-        
+
         <StackPanel x:Name="easy_panel" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="Collapsed">
-            <Label Content="128" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
-            <Label Content="64" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
-            <Label Content="32" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
-            <Label Content="16" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
-            <Label Content="8" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
-            <Label Content="4" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
-            <Label Content="2" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
-            <Label Content="1" Height="38" Width="50" Margin="10,0,10,50" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="White" />
+            <Label Content="128" Height="38" Width="50" Margin="10,310,10,50" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="#FFD9DA22" />
+            <Label Content="64" Height="38" Width="50" Margin="10,310,10,50" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="#FFD9DA22" />
+            <Label Content="32" Height="38" Width="50" Margin="10,310,10,50" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="#FFD9DA22" />
+            <Label Content="16" Height="38" Width="50" Margin="10,310,10,50" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="#FFD9DA22" />
+            <Label Content="8" Height="38" Width="50" Margin="10,310,10,50" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="#FFD9DA22" />
+            <Label Content="4" Height="38" Width="50" Margin="10,310,10,50" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="#FFD9DA22" />
+            <Label Content="2" Height="38" Width="50" Margin="10,310,10,50" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="#FFD9DA22" />
+            <Label Content="1" Height="38" Width="50" Margin="10,310,10,50" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="#FFD9DA22" />
+        </StackPanel>
+
+        <StackPanel x:Name="hard_panel" Visibility="Collapsed">
+            <TextBox x:Name="uString" Text="" Margin="0,310,0,0" Width="180" Height="25"/>
+        </StackPanel>
+
+        <StackPanel x:Name="GameOver_Panel" Visibility="Collapsed">
+            <Label x:Name="lbl_GameOver" Content="Game Over" Height="130" Width="660" Margin="0,0,0,0" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/ASSets/#Pokemon Solid" FontWeight="Bold" Foreground="#FFD9DA22" />
+            <Label x:Name="lbl_Name" Content="Input Name" Height="60" Width="200" Margin="0,120,0,0" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold" />
+            <TextBox x:Name="uName" Text="" Margin="0,0,0,0" Width="180" Height="25"/>
+            <Button x:Name="btn_submitInfo" Content="Done" Height="40" Width="110" Margin="0,30,0,0" Click="btn_submitInfo_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+        </StackPanel>
+
+        <StackPanel x:Name="FinalStats_Panel" Orientation="Horizontal" Visibility="Collapsed">
+            <Label  Content="Final Score:" Height="60" Width="200" Margin="0,0,0,120" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold" />
+            <Label x:Name="lbl_uScore" Content="womp" Height="60" Width="120" Margin="0,0,80,120" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold" />
+            <Label  Content="Time Played:" Height="60" Width="200" Margin="0,0,0,120" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold" />
+            <Label x:Name="lbl_uTime" Content="womp" Height="60" Width="200" Margin="0,0,0,120" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold" />
         </StackPanel>
 
     </Grid>

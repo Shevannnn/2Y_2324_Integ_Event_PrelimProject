@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:_2324_2Y_Integ_Event_PrelimProject"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="PokemonSolid">pack:/ASSets/#Pokemon Solid</FontFamily>
     </Application.Resources>
 </Application>

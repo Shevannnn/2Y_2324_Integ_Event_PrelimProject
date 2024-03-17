@@ -89,6 +89,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="ASSets\PokemonSolid.ttf" />
+    <Resource Include="ASSets\Minecraft.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,6 +98,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ASSets\gamebg.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ASSets\labelbg.png" />
+    <Resource Include="ASSets\startlabel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ASSets\buttonbg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

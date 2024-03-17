@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace _2324_2Y_Integ_Event_PrelimProject
 {
@@ -39,8 +40,17 @@ namespace _2324_2Y_Integ_Event_PrelimProject
             using (StreamWriter sw = new StreamWriter("Easy_Lboard.csv")) { }
             using (StreamWriter sw = new StreamWriter("Med_Lboard.csv")) { }
             using (StreamWriter sw = new StreamWriter("Hard_Lboard.csv")) { }
+        }
 
-
+        public void AddToCSV(List<Pdata> PdataList, string FileName)
+        {
+            using (StreamWriter sw = new StreamWriter(FileName))
+            {
+                foreach(Pdata data in PdataList)
+                {
+                    sw.WriteLine($"{data.Name},{data.Score},{data.Playtime}");
+                }
+            }
         }
     }
 }
