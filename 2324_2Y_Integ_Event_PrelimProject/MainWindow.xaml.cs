@@ -33,7 +33,6 @@ namespace _2324_2Y_Integ_Event_PrelimProject
         private DispatcherTimer _timer;
         private DispatcherTimer _uPlaytime;
         List<Pdata> lboardData = new List<Pdata>();
-        List<Pinfo> dataList = new List<Pinfo>();
 
         public MainWindow()
         {
@@ -111,13 +110,17 @@ namespace _2324_2Y_Integ_Event_PrelimProject
         private void GetData()
         {
             lboardData.Clear();
-            dataList.Clear();
             lboardData = _cm.GetPdata(FileName);
+            lboardData.Sort((x, y) => y.Score.CompareTo(x.Score));
+            int count = 0;
             foreach (Pdata data in lboardData)
             {
-                dataList.Add(new Pinfo { Column1 = data.Name, Column2 = data.Score, Column3 = data.Playtime });
+                Leaderboard.Items.Add(new { Column1 = data.Name, Column2 = data.Score, Column3 = data.Playtime });
+                count++;
+
+                if (count == 10)
+                    break;
             }
-            Leaderboard.ItemsSource = dataList;
         }
 
         private void btn_lboard_back_Click(object sender, RoutedEventArgs e)
@@ -126,7 +129,7 @@ namespace _2324_2Y_Integ_Event_PrelimProject
             btn_lBoards.Visibility = Visibility.Visible;
             leaderboard.Visibility = Visibility.Collapsed;
             pnl_lboard_back.Visibility = Visibility.Collapsed;
-            Leaderboard.ItemsSource = null;
+            Leaderboard.Items.Clear();
         }
 
         private void btn_backtoop_Click(object sender, RoutedEventArgs e)
@@ -197,6 +200,7 @@ namespace _2324_2Y_Integ_Event_PrelimProject
             lbl_score.Content = score;
             num_panel.Visibility = Visibility.Visible;
             timer_panel.Visibility = Visibility.Visible;
+            pnl_game_back.Visibility = Visibility.Visible;
         }
 
         private void btn1_Click(object sender, RoutedEventArgs e)
@@ -307,7 +311,7 @@ namespace _2324_2Y_Integ_Event_PrelimProject
             {
                 if (score > 0)
                 {
-                    score -= 10;
+                    score -= 20;
                 }
                 ResetButtons();
             }
@@ -381,7 +385,7 @@ namespace _2324_2Y_Integ_Event_PrelimProject
         {
             ResetButtons();
             lbl_uScore.Content = score.ToString();
-            lbl_uTime.Content = uTime.ToString();
+            lbl_uTime.Content = uTime.ToString() + "s";
             num_panel.Visibility = Visibility.Collapsed;
             button_panel.Visibility = Visibility.Collapsed;
             easy_panel.Visibility = Visibility.Collapsed;
@@ -402,8 +406,8 @@ namespace _2324_2Y_Integ_Event_PrelimProject
 
             Pdata newPdata = new Pdata();
             newPdata.Name = uName.Text.ToString();
-            newPdata.Score = score.ToString();
-            newPdata.Playtime = uTime.ToString();
+            newPdata.Score = score;
+            newPdata.Playtime = uTime;
 
             if (diff == "easy")
             {
@@ -426,6 +430,18 @@ namespace _2324_2Y_Integ_Event_PrelimProject
             _cm.AddToCSV(Top10, FileName);
 
             uName.Text = "";
+        }
+
+        private void btn_game_back_Click(object sender, RoutedEventArgs e)
+        {
+            num_panel.Visibility = Visibility.Collapsed;
+            button_panel.Visibility = Visibility.Collapsed;
+            easy_panel.Visibility = Visibility.Collapsed;
+            hard_panel.Visibility = Visibility.Collapsed;
+            timer_panel.Visibility = Visibility.Collapsed;
+            pnl_game_back.Visibility = Visibility.Collapsed;
+            Opening.Visibility = Visibility.Visible;
+            
         }
     }
 }

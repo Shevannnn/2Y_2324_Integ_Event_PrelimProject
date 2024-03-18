@@ -9,14 +9,14 @@ namespace _2324_2Y_Integ_Event_PrelimProject
     internal class Pdata
     {
         public string Name;
-        public string Score;
-        public string Playtime;
+        public int Score;
+        public int Playtime;
 
         public Pdata()
         {
-            Name = "asd";
-            Score = "";
-            Playtime = "";
+            Name = "";
+            Score = 0;
+            Playtime = 0;
         }
 
         public Pdata(string[] values)
@@ -24,8 +24,8 @@ namespace _2324_2Y_Integ_Event_PrelimProject
             if (values.Length == 3)
             {
                 Name = values[0].Trim();
-                Score = values[1].Trim();
-                Playtime = values[2].Trim();
+                Score = int.Parse(values[1].Trim());
+                Playtime = int.Parse(values[2].Trim());
             }
         }
     }

@@ -18,6 +18,7 @@
             <Setter Property="Height" Value="40"/>
             <Setter Property="Width" Value="110"/>
             <Setter Property="FontFamily" Value="/ASSets/Minecraft.ttf #Minecraft"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="20"/>
         </Style>
@@ -46,7 +47,7 @@
             <ImageBrush ImageSource="/ASSets/gamebg.jpg"/>
         </Grid.Background>
 
-        <StackPanel x:Name="Opening" Visibility="Visible">
+        <StackPanel x:Name="Opening" Visibility="Collapsed">
             <Button x:Name="btn_lBoard" Style="{StaticResource ButtonStyle}" Content="Leaderboard" Height="40" Width="190" Margin="575,20,0,0" Click="btn_lBoard_Click" FontSize="20" />
             <Image Source="/ASSets/startlabel.png" Height="90" Margin="0,40,0,0"/>
             <!--<Label Content="8 Bit Binary Game" Height="167" Width="500" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" FontFamily="/ASSets/PokemonSolid.ttf #Pokemon Solid" Foreground="#FFD9DA22" />-->
@@ -94,19 +95,23 @@
             <Button x:Name="btn_hard" Content="Hard" Margin="25,0,25,200" Click="btn_hard_Click" Style="{StaticResource ButtonStyle}" />
         </StackPanel>
 
-        <StackPanel x:Name="timer_panel" Orientation="Horizontal" VerticalAlignment="Top" Visibility="Collapsed">
-            <Label x:Name="lbl_score" Content="0" Height="40" Width="60" Margin="10,10,500,0" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold" Background="#FF232055" />
-            <Label x:Name="lbl_round" Content="womp" Height="50" Width="120" Margin="0,10,30,0" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold"/>
-            <Label x:Name="lbl_timer" Content="0" Height="50" Width="60" Margin="0,10,0,0" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold"/>
+        <StackPanel x:Name="timer_panel" Orientation="Horizontal" VerticalAlignment="Top" Visibility="Visible">
+            <Label x:Name="lbl_score" Content="0" Height="40" Width="60" Margin="10,10,500,0" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/ASSets/Minecraft.ttf #Minecraft" Foreground="#FFD9DA22" FontWeight="Bold" Background="#FF232055" />
+            <Label x:Name="lbl_round" Content="womp" Height="50" Width="120" Margin="0,10,30,0" FontSize="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/ASSets/Minecraft.ttf #Minecraft" Foreground="#FFD9DA22" FontWeight="Bold"/>
+            <Label x:Name="lbl_timer" Content="0" Height="50" Width="60" Margin="0,10,0,0" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/ASSets/Minecraft.ttf #Minecraft" Foreground="#FFD9DA22" FontWeight="Bold"/>
         </StackPanel>
 
-        <StackPanel x:Name="num_panel" Visibility="Collapsed">
-            <Label x:Name="lbl_num" Content="0" Height="100" Width="150" Margin="0,60,0,0" FontSize="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold" />
-            <Button x:Name="btn_check" Content="Submit Answer" Height="40" Width="200" Margin="0,210,0,0" Click="btn_check_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+        <StackPanel x:Name="pnl_game_back" HorizontalAlignment="Left" Visibility="Visible">
+            <Button x:Name="btn_game_back" Content="Give Up!" Style="{StaticResource ButtonStyle}" Margin="20,370,0,0" Click="btn_game_back_Click" />
+        </StackPanel>
+
+        <StackPanel x:Name="num_panel" Visibility="Visible">
+            <Label x:Name="lbl_num" Content="0" Height="100" Width="150" Margin="0,60,0,0" FontSize="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Cascadia Code SemiBold" Foreground="#FFD9DA22" FontWeight="Bold" />
+            <Button x:Name="btn_check" Content="Submit Answer" Style="{StaticResource ButtonStyle}" Height="40" Width="200" Margin="0,210,0,0" Click="btn_check_Click" />
         </StackPanel>
 
         <StackPanel x:Name="button_panel" Orientation="Horizontal" HorizontalAlignment="Center" Visibility="Collapsed">
-            <Button x:Name="btn128" Content="0" Height="40" Width="50" Margin="10,180,10,0" Click="btn128_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn128" Content="0" Style="{StaticResource ButtonStyle}" Height="40" Width="50" Margin="10,180,10,0" Click="btn128_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
             <Button x:Name="btn64" Content="0" Height="40" Width="50" Margin="10,180,10,0" Click="btn64_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
             <Button x:Name="btn32" Content="0" Height="40" Width="50" Margin="10,180,10,0" Click="btn32_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
             <Button x:Name="btn16" Content="0" Height="40" Width="50" Margin="10,180,10,0" Click="btn16_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
@@ -131,18 +136,18 @@
             <TextBox x:Name="uString" Text="" Margin="0,310,0,0" Width="180" Height="25"/>
         </StackPanel>
 
-        <StackPanel x:Name="GameOver_Panel" Visibility="Collapsed">
-            <Label x:Name="lbl_GameOver" Content="Game Over" Height="130" Width="660" Margin="0,0,0,0" FontSize="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/ASSets/#Pokemon Solid" FontWeight="Bold" Foreground="#FFD9DA22" />
-            <Label x:Name="lbl_Name" Content="Input Name" Height="60" Width="200" Margin="0,120,0,0" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold" />
+        <StackPanel x:Name="GameOver_Panel" VerticalAlignment="Bottom" Visibility="Collapsed">
+            <Label x:Name="lbl_Name" Content="Input Name" Height="60" Width="200" Margin="0,120,0,0" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/ASSets/Minecraft.ttf #Minecraft" Foreground="#FFD9DA22" FontWeight="Bold" />
             <TextBox x:Name="uName" Text="" Margin="0,0,0,0" Width="180" Height="25"/>
-            <Button x:Name="btn_submitInfo" Content="Done" Height="40" Width="110" Margin="0,30,0,0" Click="btn_submitInfo_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="Cascadia Code SemiBold" FontSize="20" />
+            <Button x:Name="btn_submitInfo" Content="Done" Height="40" Width="110" Margin="0,30,0,60" Click="btn_submitInfo_Click" Background="#FF271F1F" BorderBrush="White" Foreground="White" FontFamily="/ASSets/Minecraft.ttf #Minecraft" FontSize="20" />
+            <Label x:Name="lbl_GameOver" Content="Game Over" Style="{StaticResource LabelStyle}" Margin="0,0,0,0" FontSize="60" />
         </StackPanel>
 
-        <StackPanel x:Name="FinalStats_Panel" Orientation="Horizontal" Visibility="Collapsed">
-            <Label  Content="Final Score:" Height="60" Width="200" Margin="0,0,0,120" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold" />
-            <Label x:Name="lbl_uScore" Content="womp" Height="60" Width="120" Margin="0,0,80,120" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold" />
-            <Label  Content="Time Played:" Height="60" Width="200" Margin="0,0,0,120" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold" />
-            <Label x:Name="lbl_uTime" Content="womp" Height="60" Width="200" Margin="0,0,0,120" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Segoe UI Semibold" Foreground="#FFD9DA22" FontWeight="Bold" />
+        <StackPanel x:Name="FinalStats_Panel" Orientation="Horizontal" VerticalAlignment="Top" Visibility="Collapsed">
+            <Label  Content="Final Score:" Height="60" Width="200" Margin="0,20,0,120" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/ASSets/Minecraft.ttf #Minecraft" Foreground="#FFD9DA22" FontWeight="Bold" />
+            <Label x:Name="lbl_uScore" Content="womp" Height="60" Width="120" Margin="0,20,80,120" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/ASSets/Minecraft.ttf #Minecraft" Foreground="#FFD9DA22" FontWeight="Bold" />
+            <Label  Content="Time Played:" Height="60" Width="200" Margin="0,20,0,120" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/ASSets/Minecraft.ttf #Minecraft" Foreground="#FFD9DA22" FontWeight="Bold" />
+            <Label x:Name="lbl_uTime" Content="womp" Height="60" Width="200" Margin="0,20,0,120" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/ASSets/Minecraft.ttf #Minecraft" Foreground="#FFD9DA22" FontWeight="Bold" />
         </StackPanel>
 
     </Grid>
